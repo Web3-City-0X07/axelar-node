@@ -25,7 +25,6 @@ import (
 	store "github.com/cosmos/cosmos-sdk/store/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
-	"github.com/cosmos/cosmos-sdk/version"
 	"github.com/cosmos/cosmos-sdk/x/auth"
 	authrest "github.com/cosmos/cosmos-sdk/x/auth/client/rest"
 	authkeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
@@ -543,7 +542,8 @@ func initBaseApp(
 ) *bam.BaseApp {
 	baseApp := bam.NewBaseApp(Name, logger, db, encodingConfig.TxConfig.TxDecoder(), baseAppOptions...)
 	baseApp.SetCommitMultiStoreTracer(traceStore)
-	baseApp.SetVersion(version.Version)
+	// baseApp.SetVersion(version.Version)
+	baseApp.SetVersion("v0.35")
 	baseApp.SetInterfaceRegistry(encodingConfig.InterfaceRegistry)
 	baseApp.SetParamStore(keepers.getSubspace(bam.Paramspace))
 	return baseApp
