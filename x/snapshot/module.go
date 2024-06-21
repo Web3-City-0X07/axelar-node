@@ -104,10 +104,8 @@ func (AppModule) RegisterInvariants(_ sdk.InvariantRegistry) {
 func (am AppModule) InitGenesis(ctx sdk.Context, cdc codec.JSONCodec, gs json.RawMessage) []abci.ValidatorUpdate {
 	var genState types.GenesisState
 	// Initialize global index to index in genesis state
-	j, _ := gs.MarshalJSON()
-	fmt.Println("snapshot.genState", j, gs)
+	fmt.Printf("Raw JSON: %s\n", gs)
 	cdc.MustUnmarshalJSON(gs, &genState)
-	fmt.Println("snapshot.genState", genState.String())
 	am.keeper.InitGenesis(ctx, &genState)
 
 	return []abci.ValidatorUpdate{}
