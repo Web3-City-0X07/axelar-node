@@ -27,6 +27,7 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 type GenesisState struct {
 	Params            Params             `protobuf:"bytes,1,opt,name=params,proto3" json:"params"`
 	ProxiedValidators []ProxiedValidator `protobuf:"bytes,2,rep,name=proxied_validators,json=proxiedValidators,proto3" json:"proxied_validators"`
+	Snapshots []string `protobuf:"bytes,3,opt,name=snapshots,proto3" json:"snapshots"`
 }
 
 func (m *GenesisState) Reset()         { *m = GenesisState{} }
